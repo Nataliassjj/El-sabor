@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario </title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div id="contenedor">
+        <h1>Registrarse</h1>
+        <form id="formulario" action="Catalogo.html" method="post">
+            <fieldset>
+                <legend><h3>Información de cliente</h3></legend>
+                <label for="nom">NOMBRE:</label>
+                <input type="text" name="nom" id="nom" required><br><br>
+
+                <label for="ape">APELLIDO:</label>
+                <input type="text" name="ape" id="ape" required><br><br>
+
+                <label for="doc">NUMERO DE DOCUMENTO:</label>
+                <input type="text" name="doc" id="doc" required><br><br>
+
+                <label for="tl">TELEFONO:</label>
+                <input type="text" name="tl" id="tl" required><br><br>
+
+                <label for="co">CORREO:</label>
+                <input type="text" name="co" id="co"><br><br>
+            </fieldset>
+            <br> <input type="submit" value="Enviar">
+            <input type="button" value="Enviar" onclick="enviarFormulario()">
+           
+        </form>
+    </div>
+
+    <script>
+        function enviarFormulario() {
+            var formData = new FormData(document.getElementById("formulario"));
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Éxito, puedes manejar la respuesta aquí si es necesario
+                        alert("Formulario enviado correctamente");
+                    } else {
+                        // Error al enviar el formulario
+                        alert("Error al enviar el formulario");
+                    }
+                }
+            };
+            xhr.open("POST", "", true); // Reemplaza "tu_archivo_de_procesamiento.php" con el archivo que manejará los datos del formulario
+            xhr.send(formData);
+        }
+    </script>
+
+
+</body>
+</html>
